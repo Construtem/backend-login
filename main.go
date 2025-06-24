@@ -21,7 +21,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"}, // Cambiar en prod
+		AllowOrigins:     []string{"https://login.tssw.cl"}, // Cambiar en prod
 		AllowMethods:     []string{"POST", "OPTIONS"},
 		AllowHeaders:     []string{"Authorization", "Content-Type"},
 		ExposeHeaders:    []string{"Content-Length"},
