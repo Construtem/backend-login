@@ -46,7 +46,7 @@ func VerifyToken(c *gin.Context) {
 	// Consultar la base de datos para obtener el rol del usuario
 	// OJO : Asegúrate de que la tabla 'usuarios' y la columna 'rol' existan en la base de datos
 	var rol string
-	err = db.DB.QueryRow("SELECT r.nombre FROM usuarios u JOIN rols r ON u.rol_id = r.id WHERE u.correo = $1", email).Scan(&rol)
+	err = db.DB.QueryRow("SELECT r.nombre FROM usuarios u JOIN roles r ON u.rol_id = r.id WHERE u.email = $1", email).Scan(&rol)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			c.JSON(http.StatusForbidden, gin.H{"error": "Usuario no registrado"})
