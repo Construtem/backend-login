@@ -7,6 +7,7 @@ import (
 	"backend-login/services"
 	"os"
 
+	_ "github.com/joho/godotenv/autoload" // Carga automática del archivo .env
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -21,7 +22,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://login.tssw.cl"}, // Cambiar en prod
+		AllowOrigins:     []string{os.Getenv("FRONT_LOGIN_URL")}, // Cambiar en prod
 		AllowMethods:     []string{"POST", "OPTIONS"},
 		AllowHeaders:     []string{"Authorization", "Content-Type"},
 		ExposeHeaders:    []string{"Content-Length"},
