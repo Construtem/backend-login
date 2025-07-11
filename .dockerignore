@@ -9,3 +9,6 @@ docker-compose.yml
 *.yaml
 *.yml
 k8s/*.yaml
+.env.example
+.gitignore
+.github
