@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: back-login-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - api-login.tssw.cl
+      secretName: api-login-tls
+  rules:
+    - host: api-login.tssw.cl
+      http:
+        paths:
+          - path: / # Aquí puedes cambiar el path si tu backend escucha en algo específico
+            pathType: Prefix
+            backend:
+              service:
+                name: back-login-service
+                port:
+                  number: 80
